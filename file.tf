@@ -4,7 +4,6 @@ terraform {
     bucket  = "mayank-terraform-state-file"
     key     = "new-state/terraform.tfstate"
     region  = "us-east-1"
-    profile = "mayank"
     
     dynamodb_table = "terraform-state-lock"
   }
@@ -20,7 +19,7 @@ terraform {
 # Provider Block 
 provider "aws" {
   region  = "us-east-1"
-  profile = "mayank"
+  profile = "default"
 }
 
 resource "aws_instance" "terraform-publc-instance" {
