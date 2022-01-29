@@ -4,8 +4,6 @@ terraform {
     bucket  = "mayank-terraform-state-file"
     key     = "new-state/terraform.tfstate"
     region  = "us-east-1"
-    
-    dynamodb_table = "terraform-state-lock"
   }
   required_version = "~>1.1.3"
   required_providers {
@@ -27,6 +25,7 @@ resource "aws_instance" "terraform-publc-instance" {
   instance_type = "t2.micro"
   key_name      = "terraform-key"
   availability_zone = "us-east-1d"
+  count             = 2 
   user_data     = <<-EOF
      #!/bin/bash
     sudo yum update -y
